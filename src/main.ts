@@ -6,11 +6,22 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+
+  app.setGlobalPrefix('api/v1');
+
+
   app.useGlobalFilters(new AllExceptionFilter());
   app.useGlobalInterceptors(new TimeOutInterceptor());
-  app.useGlobalPipes(new ValidationPipe());
+  //Nos permite que aunque a un param le llegue un string y espere un number, lo convierta
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true
+  }));
 
   app.enableCors();
+
+ 
 
   await app.listen(process.env.PORT || 3000);
 }
