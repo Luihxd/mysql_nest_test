@@ -3,9 +3,10 @@ import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersController } from './users/users.controller';
 
 @Module({
-  imports: [CatsModule, UsersModule, TypeOrmModule.forRoot({
+  imports: [TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -15,8 +16,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
     autoLoadEntities: true,
     synchronize: true
-  })],
-  controllers: [, CatsController],
+    }),
+    CatsModule, 
+    UsersModule
+  ],
+  controllers: [],
   providers: [],
 })
 export class AppModule {}

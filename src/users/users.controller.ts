@@ -12,7 +12,7 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
+  @Get("/find_all")
   findAll() {
     return this.usersService.findAll();
   }
