@@ -12,23 +12,23 @@ export class CatsService {
     @InjectRepository(Cat) 
     private readonly catsRepository: Repository<Cat>,
   ) {}
-  create(createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+  async create(createCatDto: CreateCatDto) {
+    return await this.catsRepository.save(createCatDto);
   }
 
-  findAll() {
-    return `This action returns all cats`;
+  async findAll() {
+    return await this.catsRepository.find();
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} cat`;
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
+  async update(id: number, updateCatDto: UpdateCatDto) {
     return `This action updates a #${id} cat`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} cat`;
   }
 }

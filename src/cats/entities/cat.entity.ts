@@ -14,6 +14,6 @@ export class Cat {
 	@Column()
 	breed: string;
 
-	@DeleteDateColumn()
-	deletedAt: Date;
+	//@DeleteDateColumn()
+	//deletedAt: Date;
 }
