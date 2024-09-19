@@ -21,7 +21,8 @@ export class CatsService {
   }
 
   async findOne(id: number) {
-    return `This action returns a #${id} cat`;
+    //return await this.catsRepository.findOne(id);
+    //return await this.catsRepository.findOne(FindOneOptions<Cat>);
   }
 
   async update(id: number, updateCatDto: UpdateCatDto) {

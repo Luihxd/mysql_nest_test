@@ -12,7 +12,7 @@ export class CatsController {
     return this.catsService.create(createCatDto);
   }
 
-  @Get()
+  @Get("/find_all")
   findAll() {
     return this.catsService.findAll();
   }
