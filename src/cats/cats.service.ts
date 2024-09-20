@@ -14,6 +14,7 @@ export class CatsService {
   ) {}
   async create(createCatDto: CreateCatDto) {
     const cat = this.catsRepository.create(createCatDto);
+    //Parece que funciona si solo usamos el save, pero no lo valida si no crea la instancia
     return await this.catsRepository.save(cat);
   }
 
@@ -22,8 +23,7 @@ export class CatsService {
   }
 
   async findOne(id: number) {
-    //return await this.catsRepository.findOne(id);
-    //return await this.catsRepository.findOne(FindOneOptions<Cat>);
+    return await this.catsRepository.findOneBy({ id });
   }
 
   async update(id: number, updateCatDto: UpdateCatDto) {
@@ -31,6 +31,10 @@ export class CatsService {
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} cat`;
+    // SoftDelete, eliminacion lógica automática por TypeORM
+    //Agrega una fecha al DeleteDateColumn, y cuando se hace el find, 
+    //no enviará ese registro, pero sigue en la base de datos
+    // SoftRemove, ocupa instancia del objeto
+    return await this.catsRepository.softDelete({ id });
   }
 }
