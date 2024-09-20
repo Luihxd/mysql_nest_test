@@ -13,7 +13,8 @@ export class CatsService {
     private readonly catsRepository: Repository<Cat>,
   ) {}
   async create(createCatDto: CreateCatDto) {
-    return await this.catsRepository.save(createCatDto);
+    const cat = this.catsRepository.create(createCatDto);
+    return await this.catsRepository.save(cat);
   }
 
   async findAll() {
