@@ -25,8 +25,8 @@ export class UsersService {
     return await this.usersRepository.findOneBy({ id });
   }
 
-  async update(id: number, UpdateUserDto: UpdateUserDto) {
-    // return await this.catsRepository.update( id, updateCatDto);return await this.usersRepository.update( id, updateCatDto);
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    return await this.usersRepository.update( id, updateUserDto);
   }
   remove(id: number) {
     return this.usersRepository.softDelete({ id });
