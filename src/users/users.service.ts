@@ -13,22 +13,22 @@ export class UsersService {
     private readonly usersRepository: Repository<User>,
   ) {}
   async create(createUserDto: CreateUserDto) {
-    return await this.usersRepository.save(createUserDto);
+    const user = this.usersRepository.create(createUserDto);
+    return await this.usersRepository.save(user);
   }
 
   async findAll() {
     return await this.usersRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    return await this.usersRepository.findOneBy({ id });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: number, UpdateUserDto: UpdateUserDto) {
+    // return await this.catsRepository.update( id, updateCatDto);return await this.usersRepository.update( id, updateCatDto);
   }
-
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.usersRepository.softDelete({ id });
   }
 }
