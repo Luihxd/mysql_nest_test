@@ -27,7 +27,7 @@ export class CatsService {
   }
 
   async update(id: number, updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+    return await this.catsRepository.update( id, updateCatDto);
   }
 
   async remove(id: number) {
