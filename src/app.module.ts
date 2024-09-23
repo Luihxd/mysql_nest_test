@@ -4,6 +4,7 @@ import { CatsModule } from './cats/cats.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from './users/users.controller';
+import { BreedsModule } from './breeds/breeds.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,7 +19,7 @@ import { UsersController } from './users/users.controller';
     synchronize: true
     }),
     CatsModule, 
-    UsersModule
+    UsersModule, BreedsModule
   ],
   controllers: [],
   providers: [],
