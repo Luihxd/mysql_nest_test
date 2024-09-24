@@ -21,15 +21,15 @@ export class BreedsService {
   }
 
   async findOne(id: number) {
-    return `This action returns a #${id} breed`;
+    return await this.breedsRepository.findOneBy({ id });
   }
 
   async update(id: number, updateBreedDto: UpdateBreedDto) {
-    return `This action updates a #${id} breed`;
+    return await this.breedsRepository.update(id, updateBreedDto);
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} breed`;
+    return await this.breedsRepository.delete(id);
   }
 }
 

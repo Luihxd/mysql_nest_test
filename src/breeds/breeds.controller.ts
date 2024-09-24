@@ -12,7 +12,7 @@ export class BreedsController {
     return this.breedsService.create(createBreedDto);
   }
 
-  @Get()
+  @Get('/find_all')
   findAll() {
     return this.breedsService.findAll();
   }

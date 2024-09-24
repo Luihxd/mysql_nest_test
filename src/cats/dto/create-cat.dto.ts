@@ -11,7 +11,7 @@ export class CreateCatDto {
 	@IsPositive()
 	age: number;
 
-	@IsString()
+	//@IsString()
 	@IsOptional()
 	breed?: Breed;
 
