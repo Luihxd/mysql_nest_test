@@ -17,6 +17,7 @@ export class User {
 	@Column()
 	password: string;
 
-	//@DeleteDateColumn()
-	//deletedAt: Date;
+	@Column()
+	@DeleteDateColumn()
+	deletedAt: Date;
 }
